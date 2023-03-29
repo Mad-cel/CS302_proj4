@@ -150,7 +150,6 @@ int main(int argc, char *argv[])
 		}
 	}
 	node_Vec.clear();
-	
 
     return 0;
 }
