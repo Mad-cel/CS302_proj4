@@ -9,7 +9,6 @@ class Node
 {
     public:
         Node(int r, int c, int weight);
-		//~Node();
         int r;
         int c;
         int weight;
@@ -28,12 +27,6 @@ Node::Node(int r, int c, int weight)
     distance_from_start = -1;
 }
 
-/*
-Node::~Node()
-{
-	delete []prev;
-}
-*/
 
 int main(int argc, char *argv[])
 {
@@ -43,7 +36,6 @@ int main(int argc, char *argv[])
     multimap<int, Node*>::iterator it;
     int num_title, title_point, map_row, map_col, start_row, start_col, total_distance, row, col, end_row, end_col;
     char type, c;
-    //Node * node;
 
     cin >> num_title;
     for (int i = 0; i < num_title; i++)
@@ -67,7 +59,6 @@ int main(int argc, char *argv[])
     }
 
     cin >> start_row >> start_col >> end_row >> end_col;
-	//cout << end_row << end_col;
     /***********End of input **********/
     Node * start_node = node_Vec[start_row][start_col];   //satrting Node
     Node * right_node, * bottom_node;
