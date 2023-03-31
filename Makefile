@@ -1,9 +1,12 @@
 CXX=		g++
 CXXFLAGS=	-g -Wall -std=gnu++11
 SHELL=		bash
-PROGRAMS=	src/dijkstras
+PROGRAMS=	src/dijkstras gen_map
 
-all:		src/dijkstras
+all:		gen_map src/dijkstras
+
+gen_map: generate_map.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 dijkstras:	src/dijkstras.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^

@@ -16,13 +16,12 @@ int main(int argc, char *argv[]) {
 	else {
 		srand(time(NULL));
 		int random;
-		int randcell;
 		int N = atoi(argv[1]);
 		ofstream gen_map("gen_map.txt");
 		char vals[] = {'f', 'g', 'G', 'h', 'm', 'r'};
 		char arr[N*N];
 
-		for(int i = 0; i < N*N; i++) { //generate map
+		for(int i = 0; i < N*N; i++) { //generate map from vals[]
 			random = rand() % 5 + 1;
 			arr[i] = vals[random];
 		}
@@ -37,7 +36,7 @@ int main(int argc, char *argv[]) {
 			gen_map << "r 5" << endl;
 			gen_map << N << " " << N << endl;
 			
-			for(int i = 0; i < N*N; i++) {
+			for(int i = 0; i < N*N; i++) {//print map to file
 				if(i%N < N-1){
 					gen_map << arr[i] << " ";
 				}
@@ -46,9 +45,9 @@ int main(int argc, char *argv[]) {
 					gen_map << arr[i] << endl;
 				}
 			}
-			randcell = rand() % (N*N + 1);
+			
 			gen_map << "0 0" << endl;
-			gen_map << (randcell % N) << " " << (randcell / N) << endl;
+			gen_map << (N - 1) << " " << (N - 1) << endl;
 
 		}
 
