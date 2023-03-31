@@ -3,7 +3,7 @@ CXXFLAGS=	-g -Wall -std=gnu++11
 SHELL=		bash
 PROGRAMS=	src/dijkstras gen_map
 
-all:		gen_map src/dijkstras
+all:		generate_map src/dijkstras
 
 gen_map: generate_map.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^
