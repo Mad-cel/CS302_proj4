@@ -81,14 +81,14 @@ int main(int argc, char *argv[])
             if (col + 1 < map_col)
             {
                 right_node = node_Vec[row][col + 1];
-                if (right_node->distance_from_start == -1)  //not visited, add the distance from start, push Node to multimap 
+                if (right_node->distance_from_start == -1 || total_distance < right_node->distance_from_start)  //not visited, add the distance from start, push Node to multimap 
                 {
                     right_node->distance_from_start = total_distance;
                     right_node->prev = start_node;
                     node_mutimap.insert(pair<int, Node *>(total_distance, right_node));
                     it = node_mutimap.begin();
                 }
-
+                /*
                 else if (total_distance < right_node->distance_from_start)  //similiarly if a shorter path exist, same thing happen
                 {
                     right_node->distance_from_start = total_distance;
@@ -96,20 +96,21 @@ int main(int argc, char *argv[])
                     node_mutimap.insert(pair<int, Node *>(total_distance, right_node));
                     it = node_mutimap.begin();
                 }
+                */
             
             }
 
             if (row + 1 < map_row)
             {
                 bottom_node = node_Vec[row + 1][col];
-                if (bottom_node->distance_from_start == -1)
+                if (bottom_node->distance_from_start == -1 || total_distance < bottom_node->distance_from_start)
                 {
                     bottom_node->distance_from_start = total_distance;
                     bottom_node->prev = start_node;
                     node_mutimap.insert(pair<int, Node*>(total_distance, bottom_node));
                     it = node_mutimap.begin();
                 }
-
+                /*
                 else if (total_distance < bottom_node->distance_from_start)
                 {
                     bottom_node->distance_from_start = total_distance;
@@ -117,6 +118,7 @@ int main(int argc, char *argv[])
                     node_mutimap.insert(pair<int, Node*>(total_distance, bottom_node));
                     it = node_mutimap.begin();                    
                 }
+                */
             }
 
             else
