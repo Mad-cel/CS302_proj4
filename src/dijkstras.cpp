@@ -1,5 +1,7 @@
 // dijsktras.cpp
 // Main Execution
+// Miller Grimsley
+// Haoren Chen
 #include <iostream>
 #include <vector>
 #include <map>
@@ -60,10 +62,12 @@ int main(int argc, char *argv[])
 
     cin >> start_row >> start_col >> end_row >> end_col;
     /***********End of input **********/
-    Node * start_node = node_Vec[start_row][start_col];   //satrting Node
+	
+	/* Start of Djikstras */
+    Node * start_node = node_Vec[start_row][start_col];   //starting node
     Node * right_node, * bottom_node;
     start_node->distance_from_start = 0;
-    node_mutimap.insert(pair<int, Node*>(0, start_node)); //insert satring node and makle the distance to 0 
+    node_mutimap.insert(pair<int, Node*>(0, start_node)); //insert starting node and make the distance to 0 
     //it = node_mutimap.begin();
     
     while (!node_mutimap.empty())
@@ -87,7 +91,6 @@ int main(int argc, char *argv[])
                     right_node->distance_from_start = total_distance;
                     right_node->prev = start_node;
                     node_mutimap.insert(pair<int, Node *>(total_distance, right_node));
-                    //it = node_mutimap.begin();
                 }          
             }
 
@@ -99,23 +102,15 @@ int main(int argc, char *argv[])
                     bottom_node->distance_from_start = total_distance;
                     bottom_node->prev = start_node;
                     node_mutimap.insert(pair<int, Node*>(total_distance, bottom_node));
-                    //it = node_mutimap.begin();
                 }
 			}
-            //it++;
+            
         }
 		node_mutimap.erase(it);
-		
-		/*
-        else
-		{
-			//node_mutimap.erase(it);
-			it++;
-		}
-		*/
 
     }
 	
+	/*Start of output*/
 	cout << node_Vec[end_row][end_col]->distance_from_start << endl;
     Node * node = node_Vec[end_row][end_col];
 	vector <pair <int, int >> dest;
