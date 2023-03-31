@@ -1,4 +1,4 @@
-# CS302 -- Project 4: Path Finding
+# CS302 - Project 4: Path Finding
 | N             | Elapsed Time  | Memory Usage   |
 |---------------|---------------|----------------|
 | 10            | 0.00s         | 92.7 kB        |
