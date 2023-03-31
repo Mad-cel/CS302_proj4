@@ -2,11 +2,14 @@
 // Main Execution
 // Miller Grimsley
 // Haoren Chen
+// This program will receive a graph and output the shortest path solution as well as 
+// The path and overall distance of the shortest path 
 #include <iostream>
 #include <vector>
 #include <map>
 using namespace std;
 
+//I use a Node class to present each Node as well as storing basic information for each Node 
 class Node
 {
     public:
@@ -19,6 +22,7 @@ class Node
         Node * prev;
 };
 
+//A constructor which sets index, viisted or not and starting distance. The prev will point to a Node which preforms backtracking  
 Node::Node(int r, int c, int weight)
 {
     this->r = r;
@@ -68,7 +72,6 @@ int main(int argc, char *argv[])
     Node * right_node, * bottom_node;
     start_node->distance_from_start = 0;
     node_mutimap.insert(pair<int, Node*>(0, start_node)); //insert starting node and make the distance to 0 
-    //it = node_mutimap.begin();
     
     while (!node_mutimap.empty())
     {
@@ -83,17 +86,21 @@ int main(int argc, char *argv[])
             col = start_node->c;
 
             //Find adjcent Node only search right and bottom
+            //Check right 
             if (col + 1 < map_col)
             {
                 right_node = node_Vec[row][col + 1];
+                //Update the distance if the Node is not visited or There is a samller distance 
                 if (right_node->distance_from_start == -1 || total_distance < right_node->distance_from_start)  //not visited, add the distance from start, push Node to multimap 
                 {
+                    //update distance, set backtrack and insert the Node to visit it
                     right_node->distance_from_start = total_distance;
                     right_node->prev = start_node;
                     node_mutimap.insert(pair<int, Node *>(total_distance, right_node));
                 }          
             }
 
+            //Similiar we will check the bottom Node 
             if (row + 1 < map_row)
             {
                 bottom_node = node_Vec[row + 1][col];
@@ -126,6 +133,7 @@ int main(int argc, char *argv[])
 		cout << dest[i].first << " " << dest[i].second << endl;
 	}
 
+    //Free memory at the end
 	for (int i = 0; i < map_row; i++)
 	{
 		for (int j = 0; j < map_row; j++)
